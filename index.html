@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yooel (thewodryoyt) — Perfil Ejecutivo & Redes</title>
+
+  <!-- Tipografías de Vanguardia (Outfit + Plus Jakarta Sans + JetBrains Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void: '#030305',
+            surface: '#09090e',
+            card: '#101017',
+            cardHover: '#171722',
+            silver: '#9ca3af',
+            ghost: '#f3f4f6'
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            outfit: ['"Outfit"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #030305;
+      color: #f3f4f6;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.09) 0%, transparent 60%),
+        radial-gradient(circle at 100% 40%, rgba(255, 255, 255, 0.03) 0%, transparent 45%),
+        radial-gradient(circle at 0% 70%, rgba(255, 255, 255, 0.03) 0%, transparent 45%);
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #030305; }
+    ::-webkit-scrollbar-thumb { background: #22222d; border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: #ffffff; }
+
+    .bento-card {
+      background: linear-gradient(145deg, rgba(16, 16, 23, 0.7) 0%, rgba(8, 8, 12, 0.9) 100%);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-card:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 20px 50px -10px rgba(255, 255, 255, 0.08);
+    }
+
+    .diffuse-heading {
+      background: linear-gradient(180deg, #ffffff 30%, #a1a1aa 85%, #52525b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background-color: #ffffff;
+      vertical-align: text-bottom;
+      animation: blink 0.9s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body class="selection:bg-white selection:text-black">
+
+  <canvas id="particles-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-20"></canvas>
+  <div class="fixed -top-40 left-1/2 -translate-x-1/2 w-[760px] h-[400px] bg-white/[0.05] rounded-full blur-[170px] pointer-events-none z-0"></div>
+
+  <!-- NAVEGACIÓN SUPERIOR -->
+  <header class="fixed top-0 left-0 w-full z-50 bento-card border-b border-white/10 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center font-outfit font-black text-2xl shadow-[0_0_25px_rgba(255,255,255,0.4)] group-hover:scale-105 transition-transform">
+          Y
+        </div>
+        <div>
+          <span class="font-outfit font-extrabold text-lg tracking-wider uppercase text-white block leading-none">Yooel</span>
+          <span class="text-[10px] font-mono text-silver">@thewodryoyt • DD.J</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-silver">
+        <a href="#about" class="hover:text-white transition-colors">Perfil</a>
+        <a href="#breakdown" class="hover:text-white transition-colors">Desglose de Redes</a>
+        <a href="#pillars" class="hover:text-white transition-colors">Especialidades</a>
+        <a href="#testimonials" class="hover:text-white transition-colors">Referencias</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="copyIP('blackmc.us')" class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-card border border-white/10 hover:border-white/30 text-xs font-mono text-white transition-all">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+          <span>blackmc.us</span>
+          <i class="fa-regular fa-copy opacity-50"></i>
+        </button>
+        <a href="https://discord.gg/blackmc" target="_blank" class="px-4 py-1.5 rounded-lg bg-white text-black hover:bg-neutral-200 text-xs font-outfit font-bold uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,255,255,0.25)]">
+          Discord
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-32">
+
+    <!-- HERO SECTION -->
+    <section id="about" class="max-w-6xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center gap-12">
+      <!-- Avatar Card -->
+      <div class="relative">
+        <div class="absolute -inset-3 bg-gradient-to-b from-white/20 via-white/5 to-transparent rounded-3xl blur-xl opacity-70"></div>
+        <div class="relative w-56 h-56 md:w-64 md:h-64 rounded-3xl bg-surface border border-white/20 p-6 flex flex-col items-center justify-between text-center shadow-2xl">
+          <div class="w-full flex justify-between items-center text-[10px] font-mono text-silver">
+            <span class="text-white font-bold tracking-widest flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> VERIFIED
+            </span>
+            <span>DD.J</span>
+          </div>
+
+          <div class="w-24 h-24 rounded-2xl bg-card border border-white/20 flex items-center justify-center shadow-inner">
+            <i class="fa-solid fa-crown text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]"></i>
+          </div>
+
+          <div>
+            <h2 class="font-outfit font-extrabold text-2xl text-white uppercase tracking-tight">Yooel</h2>
+            <span class="text-xs font-mono text-silver">thewodryoyt</span>
+          </div>
+
+          <div class="w-full py-1.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-mono text-white uppercase tracking-widest font-semibold">
+            Dueño • BlackMC & MineCold
+          </div>
+        </div>
+      </div>
+
+      <!-- Texto Hero & Presentación -->
+      <div class="flex-1 text-center md:text-left">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-silver text-xs font-mono mb-4">
+          <span class="w-2 h-2 rounded-full bg-white"></span> Perfil Profesional & Gestión de Redes
+        </div>
+
+        <h1 class="font-outfit text-4xl sm:text-6xl lg:text-7xl font-extrabold uppercase text-white leading-none tracking-tight">
+          Hola, soy <span class="diffuse-heading">Yooel</span>
+        </h1>
+
+        <!-- Typewriter Dinámico -->
+        <div class="h-9 mt-2 text-base sm:text-xl font-mono text-white flex items-center justify-center md:justify-start">
+          <span class="text-silver mr-2">&gt;</span>
+          <span id="typewriter-text" class="font-semibold text-ghost"></span>
+          <span class="cursor-blink"></span>
+        </div>
+
+        <p class="mt-4 text-silver text-base md:text-lg leading-relaxed font-normal max-w-2xl">
+          Tengo <strong class="text-white font-semibold">siete meses de experiencia</strong> como configurador de servidores, media manager, manager y builder. Especializado en diseño de modalidades competitivas como BoxPvP, gestión de comunidades y optimización de infraestructura.
+        </p>
+
+        <!-- Botones de Acción -->
+        <div class="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-4">
+          <a href="https://discord.gg/blackmc" target="_blank" class="px-7 py-3.5 rounded-xl bg-white text-black hover:bg-neutral-200 font-outfit font-bold text-sm uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)] flex items-center gap-2">
+            <i class="fa-brands fa-discord text-base"></i> Servidor de Discord
+          </a>
+          <button onclick="copyIP('blackmc.us')" class="px-6 py-3.5 rounded-xl bg-card hover:bg-cardHover border border-white/20 text-white font-mono text-xs transition-all flex items-center gap-2">
+            <i class="fa-solid fa-server text-silver"></i> IP: blackmc.us
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESGLOSE ÚNICO: BENTO GRID DE REDES -->
+    <section id="breakdown" class="max-w-6xl mx-auto px-6 py-12">
+      <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono text-silver uppercase tracking-widest">// Arquitectura de Proyectos</span>
+          <h2 class="font-outfit text-3xl md:text-4xl font-extrabold text-white uppercase mt-1">
+            Desglose de Servidores & Cargos
+          </h2>
+        </div>
+        <span class="text-xs font-mono text-silver">Haz clic en los paneles para interactuar con los sistemas.</span>
+      </div>
+
+      <!-- Bento Grid Único -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- 1. BlackMC: Bloque Insignia (Ocupa 7 columnas) -->
+        <div class="lg:col-span-7 bento-card rounded-3xl p-7 border border-white/20 relative overflow-hidden flex flex-col justify-between group">
+          <div class="absolute -top-16 -right-16 w-48 h-48 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="px-3 py-1 rounded-full bg-white text-black font-mono font-bold text-xs uppercase tracking-wider shadow-[0_0_12px_rgba(255,255,255,0.4)]">
+                👑 DUEÑO / OWNER
+              </span>
+              <span class="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Activo
+              </span>
+            </div>
+
+            <span class="text-[11px] font-mono text-silver uppercase tracking-widest block">Proyecto Principal</span>
+            <h3 class="font-outfit font-black text-3xl md:text-4xl text-white mt-1">BlackMC Network</h3>
+            <p class="text-xs font-mono text-white/90 mt-1">blackmc.us • discord.gg/blackmc</p>
+
+            <p class="text-xs md:text-sm text-silver mt-4 leading-relaxed font-normal">
+              Dirección ejecutiva integral y desarrollo de modalidades. Creador de la arquitectura técnica del BoxPvP, balanceo de economía in-game, sistema de rangos y dirección del equipo de Staff.
+            </p>
+          </div>
+
+          <!-- Mini Monitor de BoxPvP Integrado en el Bento -->
+          <div class="mt-6 pt-5 border-t border-white/10 grid grid-cols-3 gap-3">
+            <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
+              <span class="text-[10px] font-mono text-silver uppercase block">Modalidad</span>
+              <span class="font-outfit font-bold text-base text-white">BoxPvP</span>
+            </div>
+            <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
+              <span class="text-[10px] font-mono text-silver uppercase block">Rendimiento</span>
+              <span class="font-outfit font-bold text-base text-emerald-400">20.0 TPS</span>
+            </div>
+            <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
+              <span class="text-[10px] font-mono text-silver uppercase block">Rol Clave</span>
+              <span class="font-outfit font-bold text-base text-white">Lead Dev</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. MineCold: Panel Táctico (Ocupa 5 columnas) -->
+        <div class="lg:col-span-5 bento-card rounded-3xl p-7 border border-white/15 relative overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="px-3 py-1 rounded-full bg-white/15 text-white border border-white/30 font-mono font-bold text-xs uppercase tracking-wider">
+                👑 DUEÑO / OWNER
+              </span>
+              <span class="text-xs font-mono text-silver">Arenas PvP</span>
+            </div>
+
+            <span class="text-[11px] font-mono text-silver uppercase tracking-widest block">Servidor Competitivo</span>
+            <h3 class="font-outfit font-black text-3xl text-white mt-1">MineCold</h3>
+            <p class="text-xs font-mono text-silver mt-1">Modalidad Duels & Sets</p>
+
+            <p class="text-xs md:text-sm text-silver mt-4 leading-relaxed font-normal">
+              Co-propietario encargado de la calibración de Knockback fluido, diseño de sets y tiendas de combate sin ventajas desproporcionadas.
+            </p>
+          </div>
+
+          <!-- Ajustes de Knockback Simulados -->
+          <div class="mt-6 pt-5 border-t border-white/10">
+            <div class="flex justify-between items-center text-xs font-mono mb-2">
+              <span class="text-silver">Perfil Knockback:</span>
+              <span class="text-white font-bold" id="kb-mode">Fast Competitive v2</span>
+            </div>
+            <button onclick="toggleKB()" class="w-full py-2.5 rounded-xl bg-card hover:bg-cardHover border border-white/10 text-xs font-mono text-silver hover:text-white transition-all flex items-center justify-center gap-2">
+              <i class="fa-solid fa-sliders text-white"></i> Probar Calibración de Arenas
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Infinity Network: Archivo Histórico (Ocupa 12 columnas completas) -->
+        <div class="lg:col-span-12 bento-card rounded-3xl p-6 border border-white/10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 opacity-85 hover:opacity-100">
+          <div class="flex items-center gap-5">
+            <div class="w-14 h-14 rounded-2xl bg-card border border-white/20 flex items-center justify-center text-2xl text-neutral-300">
+              <i class="fa-solid fa-cube"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-3">
+                <h3 class="font-outfit font-extrabold text-2xl text-neutral-200">Infinity Network</h3>
+                <span class="px-2.5 py-0.5 rounded bg-neutral-900 border border-neutral-700 text-neutral-300 text-[10px] font-mono font-bold uppercase">
+                  🔨 BUILDER
+                </span>
+                <span class="px-2 py-0.5 rounded bg-red-950/70 border border-red-800 text-red-400 text-[10px] font-mono font-bold uppercase">
+                  Cerró
+                </span>
+              </div>
+              <p class="text-xs text-neutral-400 mt-1 max-w-2xl leading-relaxed">
+                Diseño estructural y construcción masiva de lobbies centrales y spawns de modalidades. Archivo de proyectos finalizado tras la disolución de la red.
+              </p>
+            </div>
+          </div>
+
+          <div class="text-right text-xs font-mono text-neutral-400 border-t md:border-t-0 md:border-l border-white/10 pt-3 md:pt-0 md:pl-6">
+            <div><span class="text-neutral-500">Especialidad:</span> <span class="text-neutral-200">WorldEdit / Spawns</span></div>
+            <div><span class="text-neutral-500">Estado:</span> <span class="text-red-400">Proyecto Concluido</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DESGLOSE DE ESPECIALIDADES (PILARES TÉCNICOS) -->
+    <section id="pillars" class="max-w-6xl mx-auto px-6 py-12">
+      <div class="mb-8">
+        <span class="text-xs font-mono text-silver uppercase tracking-widest">// Las 4 Disciplinas</span>
+        <h2 class="font-outfit text-3xl font-extrabold text-white uppercase mt-1">Especialidades de Yooel</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Pilar 1 -->
+        <div class="bento-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-card border border-white/15 flex items-center justify-center text-white mb-4">
+              <i class="fa-solid fa-gears text-lg"></i>
+            </div>
+            <span class="text-[10px] font-mono text-silver uppercase">Pilar 01</span>
+            <h4 class="font-outfit font-bold text-xl text-white mt-1">Configurador</h4>
+            <p class="text-xs text-silver mt-2 leading-relaxed">
+              PaperMC, BoxPvP Core, DeluxeMenus, economía sin exploits y optimización de latencia en servidores masivos.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 text-[11px] font-mono text-white/90">
+            20.0 TPS Garantizados
+          </div>
+        </div>
+
+        <!-- Pilar 2 -->
+        <div class="bento-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-card border border-white/15 flex items-center justify-center text-white mb-4">
+              <i class="fa-solid fa-bullhorn text-lg"></i>
+            </div>
+            <span class="text-[10px] font-mono text-silver uppercase">Pilar 02</span>
+            <h4 class="font-outfit font-bold text-xl text-white mt-1">Media Manager</h4>
+            <p class="text-xs text-silver mt-2 leading-relaxed">
+              Estrategias de contenido, captación de creadores, anuncios estructurados y difusión comunitaria en Discord.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 text-[11px] font-mono text-white/90">
+            Gestión de Alcance
+          </div>
+        </div>
+
+        <!-- Pilar 3 -->
+        <div class="bento-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-card border border-white/15 flex items-center justify-center text-white mb-4">
+              <i class="fa-solid fa-users-gear text-lg"></i>
+            </div>
+            <span class="text-[10px] font-mono text-silver uppercase">Pilar 03</span>
+            <h4 class="font-outfit font-bold text-xl text-white mt-1">Manager General</h4>
+            <p class="text-xs text-silver mt-2 leading-relaxed">
+              Liderazgo de equipo, capacitación de moderadores, resolución de conflictos y mantenimiento del orden interno.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 text-[11px] font-mono text-white/90">
+            Liderazgo de Staff
+          </div>
+        </div>
+
+        <!-- Pilar 4 -->
+        <div class="bento-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-card border border-white/15 flex items-center justify-center text-white mb-4">
+              <i class="fa-solid fa-cubes text-lg"></i>
+            </div>
+            <span class="text-[10px] font-mono text-silver uppercase">Pilar 04</span>
+            <h4 class="font-outfit font-bold text-xl text-white mt-1">World Builder</h4>
+            <p class="text-xs text-silver mt-2 leading-relaxed">
+              Diseño de mapas temáticos, arenas de combate simétricas y lobbies inmersivos usando WorldEdit y FAWE.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 text-[11px] font-mono text-white/90">
+            Construcción de Spawns
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS & VOUCH REALES DEL STAFF -->
+    <section id="testimonials" class="max-w-6xl mx-auto px-6 py-14">
+      <div class="mb-8">
+        <span class="text-xs font-mono text-silver uppercase tracking-widest">// Vouch & Reconocimientos Reales</span>
+        <h2 class="font-outfit text-3xl font-extrabold text-white uppercase mt-1">Referencias del Staff</h2>
+        <p class="text-xs text-silver mt-1">Mensajes reales enviados por el equipo directivo sobre mi trabajo en BoxPvP y gestión general.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Testimonio 1: LuTrEx -->
+        <div class="bento-card rounded-3xl p-6 border border-white/15 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3.5 pb-4 mb-4 border-b border-white/10">
+              <div class="w-12 h-12 rounded-full bg-[#15151c] border-2 border-white/30 flex items-center justify-center relative overflow-hidden">
+                <i class="fa-solid fa-user-shield text-xl text-white"></i>
+                <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 border border-black"></span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-outfit font-bold text-lg text-white leading-none">Head Manager | LuTrEx</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white border border-white/20">Head Manager</span>
+                </div>
+                <div class="text-[11px] font-mono text-silver flex items-center gap-2 mt-1">
+                  <span>54.benjaz • Benja</span>
+                  <span class="text-[10px] px-1.5 py-0.2 rounded bg-white/5 text-neutral-300">psicosiao</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-xs font-mono text-neutral-300 leading-relaxed space-y-3" id="quote-lutrex">
+              <p>
+                "Quería tomarme un momento para agradecerte por todo lo que has hecho con el BoxPvP. Sinceramente, todo el trabajo, esfuerzo y dedicación que le has puesto ha sido increíble. Se nota cada hora invertida, cada detalle y todas las ganas que has tenido de sacar adelante este proyecto."
+              </p>
+              <p>
+                "Gracias por confiar en el equipo, por darnos la oportunidad de formar parte de esto y por todo lo que has hecho para que el servidor siga creciendo. Puede que a veces no se note todo el esfuerzo que hay detrás, pero créeme que se valora muchísimo."
+              </p>
+              <p>
+                "De verdad, gracias por todo, por tu tiempo, tu paciencia y por nunca dejar de intentar mejorar las cosas. ¡Todo lo que has logrado con el BoxPvP ha sido increíble y espero que sigan llegando muchos más éxitos! ❤️"
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-white/5 flex items-center justify-between">
+            <button onclick="addReaction('lutrex-badge')" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-silver hover:text-white transition-all flex items-center gap-2">
+              <span>❤️</span> <span id="lutrex-badge">16</span>
+            </button>
+            <button onclick="copyQuote('quote-lutrex')" class="text-[11px] font-mono text-silver hover:text-white flex items-center gap-1.5 transition-colors">
+              <i class="fa-regular fa-copy"></i> Copiar Mensaje
+            </button>
+          </div>
+        </div>
+
+        <!-- Testimonio 2: Iván -->
+        <div class="bento-card rounded-3xl p-6 border border-white/15 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3.5 pb-4 mb-4 border-b border-white/10">
+              <div class="w-12 h-12 rounded-full bg-[#15151c] border-2 border-white/30 flex items-center justify-center relative overflow-hidden">
+                <i class="fa-solid fa-bolt text-xl text-white"></i>
+                <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 border border-black"></span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-outfit font-bold text-lg text-white leading-none">SrMod | Iván ⚡ RAYO</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white border border-white/20">SrMod</span>
+                </div>
+                <div class="text-[11px] font-mono text-silver flex items-center gap-2 mt-1">
+                  <span>ivanc2010</span>
+                  <span class="text-[10px] px-1.5 py-0.2 rounded bg-white/5 text-neutral-300">⚡ RAYO</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-xs font-mono text-neutral-300 leading-relaxed space-y-3" id="quote-ivan">
+              <p>
+                "Yoel, de verdad quería decirte esto porque pocas veces se dice, pero tu trabajo en el BoxPvP se ha notado muchísimo."
+              </p>
+              <p>
+                "No ha sido solo estar ahí como Staff, ha sido el tiempo que le has dedicado, la paciencia que has tenido con la gente, las ganas de ayudar y de que todo saliera bien aunque a veces nadie lo notara. Eso no lo hace cualquiera."
+              </p>
+              <p>
+                "Gracias por estar siempre pendiente, por apoyar al equipo y por hacer que el servidor se sintiera como un lugar chévere para estar. Se nota cuando alguien hace las cosas con el corazón y tú lo hiciste así."
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-white/5 flex items-center justify-between">
+            <button onclick="addReaction('ivan-badge')" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-silver hover:text-white transition-all flex items-center gap-2">
+              <span>❤️</span> <span id="ivan-badge">12</span>
+            </button>
+            <button onclick="copyQuote('quote-ivan')" class="text-[11px] font-mono text-silver hover:text-white flex items-center gap-1.5 transition-colors">
+              <i class="fa-regular fa-copy"></i> Copiar Mensaje
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CIERRE MINIMALISTA -->
+  <footer class="border-t border-white/10 bg-surface py-8 px-6 text-center">
+    <p class="text-xs font-mono text-silver tracking-widest uppercase">
+      Desarrollado por <span class="text-white font-bold">Synthetix Studios</span>
+    </p>
+  </footer>
+
+  <!-- NOTIFICACIÓN TOAST -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none px-4 py-2.5 rounded-xl bg-surface border border-white/30 text-white text-xs font-mono flex items-center gap-2 shadow-2xl">
+    <i class="fa-solid fa-check text-white"></i>
+    <span id="toast-text">Acción completada</span>
+  </div>
+
+  <script>
+    /* ========================================================
+       1. GENERADOR DE AUDIO HÁPTICO
+       ======================================================== */
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playBeep(freq = 480, duration = 0.04) {
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    /* ========================================================
+       2. TYPEWRITER EFFECT DINÁMICO
+       ======================================================== */
+    const rolesList = [
+      'Configurador de Servidores',
+      'Media Manager',
+      'Network Manager',
+      'World Builder'
+    ];
+    let rIdx = 0, cIdx = 0, deleting = false;
+    const typewriterEl = document.getElementById('typewriter-text');
+
+    function handleTypewriter() {
+      const current = rolesList[rIdx];
+
+      if (deleting) {
+        typewriterEl.textContent = current.substring(0, cIdx - 1);
+        cIdx--;
+      } else {
+        typewriterEl.textContent = current.substring(0, cIdx + 1);
+        cIdx++;
+      }
+
+      let speed = deleting ? 35 : 75;
+
+      if (!deleting && cIdx === current.length) {
+        speed = 2000;
+        deleting = true;
+      } else if (deleting && cIdx === 0) {
+        deleting = false;
+        rIdx = (rIdx + 1) % rolesList.length;
+        speed = 350;
+      }
+
+      setTimeout(handleTypewriter, speed);
+    }
+    handleTypewriter();
+
+    /* ========================================================
+       3. INTERACTIVO BENTO: CALIBRACIÓN KNOCKBACK
+       ======================================================== */
+    const kbModes = ['Fast Competitive v2', 'Smooth Practice v1', 'BoxPvP Anti-Stall', 'Duels Hardcore'];
+    let kbIdx = 0;
+    function toggleKB() {
+      playBeep(520);
+      kbIdx = (kbIdx + 1) % kbModes.length;
+      document.getElementById('kb-mode').innerText = kbModes[kbIdx];
+      triggerToast('Calibración aplicada: ' + kbModes[kbIdx]);
+    }
+
+    /* ========================================================
+       4. REACCIONES & COPIAR TESTIMONIOS
+       ======================================================== */
+    function addReaction(id) {
+      playBeep(640);
+      const el = document.getElementById(id);
+      el.innerText = parseInt(el.innerText) + 1;
+      triggerToast('¡Reacción añadida!');
+    }
+
+    function copyQuote(id) {
+      playBeep(440);
+      const content = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(content).then(() => {
+        triggerToast('Mensaje de recomendación copiado.');
+      });
+    }
+
+    /* ========================================================
+       5. COPIAR IP & TOAST
+       ======================================================== */
+    function copyIP(ip) {
+      playBeep(480);
+      navigator.clipboard.writeText(ip).then(() => {
+        triggerToast('IP copiada al portapapeles: ' + ip);
+      });
+    }
+
+    function triggerToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 2600);
+    }
+
+    /* ========================================================
+       6. CANVAS DE FONDO MONOCROMÁTICO
+       ======================================================== */
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const dots = Array.from({ length: 35 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 1.5 + 0.5,
+      vx: (Math.random() - 0.5) * 0.15,
+      vy: (Math.random() - 0.5) * 0.15
+    }));
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = '#ffffff';
+      dots.forEach(d => {
+        d.x += d.vx;
+        d.y += d.vy;
+        if (d.x < 0) d.x = width;
+        if (d.x > width) d.x = 0;
+        if (d.y < 0) d.y = height;
+        if (d.y > height) d.y = 0;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  </script>
+</body>
+</html>
