@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,10 +16,10 @@
       theme: {
         extend: {
           colors: {
-            void: '#030305',
-            surface: '#08080c',
-            card: '#101016',
-            cardHover: '#16161f',
+            void: '#020204',
+            surface: '#07070b',
+            card: '#0e0e15',
+            cardHover: '#14141e',
             silver: '#9ca3af',
             ghost: '#f3f4f6'
           },
@@ -35,37 +35,39 @@
 
   <style>
     body {
-      background-color: #030305;
+      background-color: #020204;
       color: #f3f4f6;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       background-image:
-        radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.09) 0%, transparent 60%),
-        radial-gradient(circle at 100% 40%, rgba(255, 255, 255, 0.03) 0%, transparent 45%),
-        radial-gradient(circle at 0% 70%, rgba(255, 255, 255, 0.03) 0%, transparent 45%);
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.16) 0%, transparent 50%),
+        radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
+        radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
     }
 
     ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #030305; }
-    ::-webkit-scrollbar-thumb { background: #22222d; border-radius: 99px; }
+    ::-webkit-scrollbar-track { background: #020204; }
+    ::-webkit-scrollbar-thumb { background: #22222e; border-radius: 99px; }
     ::-webkit-scrollbar-thumb:hover { background: #ffffff; }
 
-    .frosted-panel {
-      background: linear-gradient(145deg, rgba(16, 16, 22, 0.72) 0%, rgba(8, 8, 12, 0.92) 100%);
+    .frosted-glass {
+      background: linear-gradient(165deg, rgba(16, 16, 24, 0.82) 0%, rgba(7, 7, 11, 0.96) 100%);
       backdrop-filter: blur(28px);
       -webkit-backdrop-filter: blur(28px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.95), 0 0 35px -10px rgba(255, 255, 255, 0.06);
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .frosted-panel:hover {
-      border-color: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 20px 50px -10px rgba(255, 255, 255, 0.08);
+    .frosted-glass:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.95), 0 0 45px -10px rgba(255, 255, 255, 0.12);
     }
 
-    .diffuse-heading {
-      background: linear-gradient(180deg, #ffffff 30%, #a1a1aa 85%, #52525b 100%);
+    .luminous-title {
+      background: linear-gradient(180deg, #ffffff 30%, #e2e8f0 70%, #cbd5e1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.45));
     }
 
     .cursor-blink {
@@ -80,422 +82,370 @@
       0%, 50% { opacity: 1; }
       51%, 100% { opacity: 0; }
     }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    .floating-box {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
   </style>
 </head>
 
 <body class="selection:bg-white selection:text-black">
 
   <canvas id="particles-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-25"></canvas>
-  <div class="fixed -top-40 left-1/2 -translate-x-1/2 w-[760px] h-[400px] bg-white/[0.05] rounded-full blur-[170px] pointer-events-none z-0"></div>
+  <div class="fixed -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[380px] bg-white/[0.08] rounded-full blur-[160px] pointer-events-none z-0"></div>
 
-  <header class="fixed top-0 left-0 w-full z-50 frosted-panel border-b border-white/10 px-6 py-4">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center font-display font-black text-xl shadow-[0_0_20px_rgba(255,255,255,0.4)] group-hover:scale-105 transition-transform">
-          Y
+  <div class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4 pointer-events-none">
+    <div class="frosted-glass rounded-2xl px-4 py-2.5 flex items-center justify-between pointer-events-auto border border-white/15 shadow-2xl">
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg overflow-hidden border border-white/20 bg-card flex-shrink-0">
+          <img src="avatar.png" alt="Yooel" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center font-bold text-xs\'>Y</div>';" class="w-full h-full object-cover">
         </div>
-        <div>
-          <span class="font-display font-bold text-lg tracking-wide uppercase text-white block leading-none">Yooel</span>
-          <span class="text-[10px] font-mono text-silver">@thewodryoyt • DD.J</span>
+        <div class="text-left">
+          <span class="font-display font-bold text-xs uppercase text-white block leading-none">YOOEL</span>
+          <span class="text-[9px] font-mono text-silver">@thewodryoyt</span>
         </div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-silver">
-        <a href="#profile" class="hover:text-white transition-colors">Perfil</a>
-        <a href="#interactive-hub" class="hover:text-white transition-colors">Sistemas & Redes</a>
-        <a href="#staff-vouch" class="hover:text-white transition-colors">Referencias</a>
-      </nav>
-
-      <div class="flex items-center gap-3">
-        <button onclick="copyIP('blackmc.us')" class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-card border border-white/10 hover:border-white/30 text-xs font-mono text-white transition-all">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+      <div class="flex items-center gap-2">
+        <button onclick="copyIP('blackmc.us')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-card border border-white/10 hover:border-white/30 text-[10px] font-mono text-white transition-all">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]"></span>
           <span>blackmc.us</span>
-          <i class="fa-regular fa-copy opacity-50"></i>
         </button>
-        <a href="https://discord.gg/blackmc" target="_blank" class="px-4 py-1.5 rounded-lg bg-white text-black hover:bg-neutral-200 text-xs font-display font-bold uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+        <a href="https://discord.gg/blackmc" target="_blank" class="px-3 py-1 rounded-lg bg-white text-black hover:bg-neutral-200 text-[10px] font-display font-bold uppercase tracking-wider transition-all shadow-[0_0_10px_rgba(255,255,255,0.2)]">
           Discord
         </a>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main class="relative z-10 pt-32">
+  <main class="relative z-10 pt-20 sm:pt-24 pb-20 px-4 flex flex-col items-center text-center">
 
-    <section id="profile" class="max-w-6xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center gap-12">
-      <div class="relative">
-        <div class="absolute -inset-3 bg-gradient-to-b from-white/20 via-white/5 to-transparent rounded-3xl blur-xl opacity-75"></div>
-        <div class="relative w-56 h-56 md:w-64 md:h-64 rounded-3xl bg-surface border border-white/20 p-6 flex flex-col items-center justify-between text-center shadow-2xl">
-          <div class="w-full flex justify-between items-center text-[10px] font-mono text-silver">
-            <span class="text-white font-bold tracking-widest flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> ONLINE
-            </span>
-            <span>DD.J</span>
+    <section class="w-full max-w-xl mx-auto flex flex-col items-center">
+      <div class="frosted-glass rounded-3xl p-6 sm:p-8 w-full flex flex-col items-center relative overflow-hidden text-center">
+        
+        <div class="w-full flex items-center justify-between pb-4 mb-5 border-b border-white/10 text-xs font-mono text-silver">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-white font-semibold tracking-wider text-[11px]">ONLINE</span>
           </div>
-
-          <div class="w-24 h-24 rounded-2xl bg-card border border-white/20 flex items-center justify-center shadow-inner relative group">
-            <i class="fa-solid fa-crown text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]"></i>
-            <div class="absolute inset-0 bg-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          </div>
-
-          <div>
-            <h2 class="font-display font-bold text-2xl text-white uppercase tracking-tight">Yooel</h2>
-            <span class="text-xs font-mono text-silver">thewodryoyt</span>
-          </div>
-
-          <div class="w-full py-1.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-mono text-white uppercase tracking-widest font-semibold">
-            Dueño • BlackMC & MineCold
-          </div>
-        </div>
-      </div>
-
-      <div class="flex-1 text-center md:text-left">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-silver text-xs font-mono mb-4">
-          <span class="w-2 h-2 rounded-full bg-white"></span> Portafolio de Dirección & Desarrollo
+          <span class="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[10px] font-semibold text-white tracking-widest">DD.J</span>
         </div>
 
-        <h1 class="font-display text-4xl sm:text-6xl font-bold uppercase text-white leading-none tracking-tight">
-          Hola, soy <span class="diffuse-heading">Yooel</span>
+        <div class="relative mb-4 floating-box">
+          <div class="absolute -inset-3 bg-white/20 rounded-3xl blur-xl opacity-70"></div>
+          <div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-card border-2 border-white/30 overflow-hidden shadow-2xl flex items-center justify-center">
+            <img src="avatar.png" alt="Yooel Avatar" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-crown text-5xl text-white\'></i>';" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-silver text-[11px] font-mono mb-2">
+          <span>@thewodryoyt</span>
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-6xl font-black uppercase tracking-tight text-white luminous-title leading-tight">
+          YOOEL
         </h1>
 
-        <div class="h-9 mt-2 text-base sm:text-xl font-mono text-white flex items-center justify-center md:justify-start">
-          <span class="text-silver mr-2">&gt;</span>
-          <span id="typewriter-text" class="font-semibold text-ghost"></span>
+        <div class="flex flex-wrap items-center justify-center gap-1.5 mt-3 w-full">
+          <span class="px-2.5 py-1 rounded-lg bg-white text-black font-mono font-bold text-[10px] uppercase shadow-sm">
+            👑 Dueño • BlackMC
+          </span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/15 text-white border border-white/20 font-mono font-bold text-[10px] uppercase">
+            👑 Dueño • MineCold
+          </span>
+          <span class="px-2.5 py-1 rounded-lg bg-neutral-900 border border-neutral-700 text-neutral-300 font-mono font-bold text-[10px] uppercase">
+            🔨 Ex-Builder • Infinity
+          </span>
+        </div>
+
+        <div class="h-7 mt-3.5 text-xs sm:text-sm font-mono text-white flex items-center justify-center">
+          <span class="text-silver mr-1.5">&gt;</span>
+          <span id="typewriter-text" class="font-semibold text-white"></span>
           <span class="cursor-blink"></span>
         </div>
 
-        <p class="mt-4 text-silver text-base md:text-lg leading-relaxed font-normal max-w-2xl">
-          Tengo <strong class="text-white font-semibold">siete meses de experiencia</strong> como configurador de servidores, media manager, manager y builder. Especializado en arquitectura competitiva de BoxPvP, gestión integral de comunidades y optimización técnica para redes de Minecraft.
+        <p class="mt-4 text-silver text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
+          Hola, soy Yooel, tengo siete meses de experiencia como configurador de servidores, media manager, manager y builder. Especializado en arquitectura competitiva de BoxPvP, gestión integral de comunidades y optimización técnica para redes de Minecraft.
         </p>
 
-        <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
-          <div class="p-3.5 rounded-xl bg-card border border-white/5">
-            <span class="font-display font-bold text-2xl text-white block count-up" data-target="7">0</span>
-            <span class="text-[10px] font-mono text-silver uppercase">Meses de Experiencia</span>
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 w-full">
+          <a href="https://discord.gg/blackmc" target="_blank" class="flex-1 min-w-[140px] px-5 py-3 rounded-xl bg-white text-black hover:bg-neutral-200 font-display font-bold text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,255,255,0.25)] flex items-center justify-center gap-2">
+            <i class="fa-brands fa-discord text-sm"></i> Servidor de Discord
+          </a>
+          <button onclick="copyIP('blackmc.us')" class="flex-1 min-w-[140px] px-5 py-3 rounded-xl bg-card hover:bg-cardHover border border-white/20 text-white font-mono text-xs transition-all flex items-center justify-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> IP: blackmc.us
+          </button>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 w-full grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
+            <span class="font-display font-bold text-xl sm:text-2xl text-white block count-up" data-target="7">0</span>
+            <span class="text-[9px] font-mono text-silver uppercase">Meses Exp</span>
           </div>
-          <div class="p-3.5 rounded-xl bg-card border border-white/5">
-            <span class="font-display font-bold text-2xl text-white block count-up" data-target="3">0</span>
-            <span class="text-[10px] font-mono text-silver uppercase">Redes en Trayectoria</span>
+          <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
+            <span class="font-display font-bold text-xl sm:text-2xl text-white block count-up" data-target="3">0</span>
+            <span class="text-[9px] font-mono text-silver uppercase">Redes</span>
           </div>
-          <div class="p-3.5 rounded-xl bg-card border border-white/5">
-            <span class="font-display font-bold text-2xl text-white block">20.0</span>
-            <span class="text-[10px] font-mono text-silver uppercase">TPS Core Estable</span>
+          <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
+            <span class="font-display font-bold text-xl sm:text-2xl text-white block">20.0</span>
+            <span class="text-[9px] font-mono text-silver uppercase">TPS Core</span>
           </div>
-          <div class="p-3.5 rounded-xl bg-card border border-white/5">
-            <span class="font-display font-bold text-2xl text-white block">BoxPvP</span>
-            <span class="text-[10px] font-mono text-silver uppercase">Especialidad Principal</span>
+          <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
+            <span class="font-display font-bold text-xl sm:text-2xl text-white block">BoxPvP</span>
+            <span class="text-[9px] font-mono text-silver uppercase">Especialidad</span>
           </div>
         </div>
 
-        <div class="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-4">
-          <a href="https://discord.gg/blackmc" target="_blank" class="px-7 py-3.5 rounded-xl bg-white text-black hover:bg-neutral-200 font-display font-bold text-sm uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)] flex items-center gap-2">
-            <i class="fa-brands fa-discord text-base"></i> Discord de BlackMC
-          </a>
-          <button onclick="copyIP('blackmc.us')" class="px-6 py-3.5 rounded-xl bg-card hover:bg-cardHover border border-white/20 text-white font-mono text-xs transition-all flex items-center gap-2">
-            <i class="fa-solid fa-server text-silver"></i> IP: blackmc.us
-          </button>
-        </div>
       </div>
     </section>
 
-    <section id="interactive-hub" class="max-w-6xl mx-auto px-6 py-12">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-        <div>
-          <span class="text-xs font-mono text-silver uppercase tracking-widest">// Arquitectura & Desglose</span>
-          <h2 class="font-display text-3xl md:text-4xl font-bold text-white uppercase mt-1">
-            Redes, Roles & Especialidades
-          </h2>
-        </div>
+    <section class="w-full max-w-xl mx-auto mt-12 flex flex-col items-center">
 
-        <div class="flex items-center gap-2 bg-surface p-1 rounded-xl border border-white/10">
-          <button onclick="switchTab('servers')" id="btn-tab-servers" class="px-4 py-2 rounded-lg bg-white text-black font-mono text-xs font-bold transition-all">
-            Servidores
-          </button>
-          <button onclick="switchTab('skills')" id="btn-tab-skills" class="px-4 py-2 rounded-lg text-silver hover:text-white font-mono text-xs transition-all">
-            Las 4 Disciplinas
-          </button>
-          <button onclick="switchTab('console')" id="btn-tab-console" class="px-4 py-2 rounded-lg text-silver hover:text-white font-mono text-xs transition-all">
-            Consola CLI
-          </button>
-        </div>
+      <div class="flex items-center justify-center gap-1.5 bg-surface p-1 rounded-xl border border-white/10 mb-6 w-full max-w-xs mx-auto">
+        <button onclick="switchTab('servers')" id="btn-tab-servers" class="flex-1 py-2 rounded-lg bg-white text-black font-mono text-xs font-bold transition-all text-center">
+          Servidores
+        </button>
+        <button onclick="switchTab('skills')" id="btn-tab-skills" class="flex-1 py-2 rounded-lg text-silver hover:text-white font-mono text-xs transition-all text-center">
+          Disciplinas
+        </button>
+        <button onclick="switchTab('console')" id="btn-tab-console" class="flex-1 py-2 rounded-lg text-silver hover:text-white font-mono text-xs transition-all text-center">
+          Consola
+        </button>
       </div>
 
-      <div id="view-servers" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div id="view-servers" class="w-full space-y-5">
 
-        <div class="lg:col-span-7 frosted-panel rounded-3xl p-7 border border-white/20 relative overflow-hidden flex flex-col justify-between group">
-          <div class="absolute -top-16 -right-16 w-48 h-48 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
-
-          <div>
-            <div class="flex items-center justify-between mb-5">
-              <span class="px-3 py-1 rounded-full bg-white text-black font-mono font-bold text-xs uppercase tracking-wider shadow-[0_0_12px_rgba(255,255,255,0.4)]">
-                👑 DUEÑO / OWNER
-              </span>
-              <span class="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Activo
-              </span>
-            </div>
-
-            <span class="text-[11px] font-mono text-silver uppercase tracking-widest block">Proyecto Principal</span>
-            <h3 class="font-display font-bold text-3xl md:text-4xl text-white mt-1">BlackMC Network</h3>
-            <p class="text-xs font-mono text-white/90 mt-1">blackmc.us • discord.gg/blackmc</p>
-
-            <p class="text-xs md:text-sm text-silver mt-4 leading-relaxed font-normal">
-              Dirección ejecutiva integral y desarrollo de modalidades. Creador de la arquitectura técnica del BoxPvP, balanceo de economía in-game, sistema de rangos y dirección del equipo de Staff.
-            </p>
+        <div class="frosted-glass rounded-3xl p-5 sm:p-6 border border-white/20 text-center flex flex-col items-center relative overflow-hidden">
+          <div class="flex items-center justify-between w-full mb-4">
+            <span class="px-2.5 py-0.5 rounded-full bg-white text-black font-mono font-bold text-[10px] uppercase tracking-wider shadow-sm">
+              👑 DUEÑO / OWNER
+            </span>
+            <span class="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Activo
+            </span>
           </div>
 
-          <div class="mt-6 pt-5 border-t border-white/10 grid grid-cols-3 gap-3">
-            <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
-              <span class="text-[10px] font-mono text-silver uppercase block">Modalidad</span>
-              <span class="font-display font-bold text-base text-white">BoxPvP</span>
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-card border border-purple-500/30 overflow-hidden shadow-lg mb-3 flex items-center justify-center">
+            <img src="blackmc.png" alt="BlackMC Network" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center bg-purple-950/40 text-purple-300 font-bold text-xs\'><i class=\'fa-solid fa-cube text-xl mb-1\'></i>BMC</div>';" class="w-full h-full object-cover">
+          </div>
+
+          <h3 class="font-display font-bold text-2xl text-white">BlackMC Network</h3>
+          <p class="text-xs font-mono text-silver mb-3">blackmc.us • discord.gg/blackmc</p>
+          <p class="text-xs text-neutral-300 leading-relaxed mb-4 max-w-md mx-auto">
+            Dirección ejecutiva integral y desarrollo de modalidades. Creador de la arquitectura técnica del BoxPvP, balanceo de economía in-game, sistema de rangos y dirección del equipo de Staff.
+          </p>
+
+          <div class="grid grid-cols-3 gap-2 pt-3 border-t border-white/10 w-full text-center">
+            <div class="p-2.5 rounded-xl bg-card border border-white/5">
+              <span class="text-[9px] font-mono text-silver uppercase block">Modo</span>
+              <span class="font-display font-bold text-xs sm:text-sm text-white">BoxPvP</span>
             </div>
-            <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
-              <span class="text-[10px] font-mono text-silver uppercase block">Rendimiento</span>
-              <span class="font-display font-bold text-base text-emerald-400">20.0 TPS</span>
+            <div class="p-2.5 rounded-xl bg-card border border-white/5">
+              <span class="text-[9px] font-mono text-silver uppercase block">TPS</span>
+              <span class="font-display font-bold text-xs sm:text-sm text-emerald-400">20.0</span>
             </div>
-            <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
-              <span class="text-[10px] font-mono text-silver uppercase block">Rol Clave</span>
-              <span class="font-display font-bold text-base text-white">Lead Dev</span>
+            <div class="p-2.5 rounded-xl bg-card border border-white/5">
+              <span class="text-[9px] font-mono text-silver uppercase block">Cargo</span>
+              <span class="font-display font-bold text-xs sm:text-sm text-white">Lead Dev</span>
             </div>
           </div>
         </div>
 
-        <div class="lg:col-span-5 frosted-panel rounded-3xl p-7 border border-white/15 relative overflow-hidden flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-5">
-              <span class="px-3 py-1 rounded-full bg-white/15 text-white border border-white/30 font-mono font-bold text-xs uppercase tracking-wider">
-                👑 DUEÑO / OWNER
-              </span>
-              <span class="text-xs font-mono text-silver">Arenas PvP</span>
-            </div>
-
-            <span class="text-[11px] font-mono text-silver uppercase tracking-widest block">Servidor Competitivo</span>
-            <h3 class="font-display font-bold text-3xl text-white mt-1">MineCold</h3>
-            <p class="text-xs font-mono text-silver mt-1">Modalidad Duels & Sets</p>
-
-            <p class="text-xs md:text-sm text-silver mt-4 leading-relaxed font-normal">
-              Co-propietario encargado de la calibración de Knockback fluido, diseño de sets y tiendas de combate sin ventajas desproporcionadas.
-            </p>
+        <div class="frosted-glass rounded-3xl p-5 sm:p-6 border border-white/15 text-center flex flex-col items-center relative overflow-hidden">
+          <div class="flex items-center justify-between w-full mb-4">
+            <span class="px-2.5 py-0.5 rounded-full bg-white/15 text-white border border-white/30 font-mono font-bold text-[10px] uppercase tracking-wider">
+              👑 DUEÑO / OWNER
+            </span>
+            <span class="text-[11px] font-mono text-silver">Arenas PvP</span>
           </div>
 
-          <div class="mt-6 pt-5 border-t border-white/10">
-            <div class="flex justify-between items-center text-xs font-mono mb-2">
-              <span class="text-silver">Perfil Knockback:</span>
-              <span class="text-white font-bold" id="kb-mode">Fast Competitive v2</span>
-            </div>
-            <button onclick="toggleKB()" class="w-full py-2.5 rounded-xl bg-card hover:bg-cardHover border border-white/10 text-xs font-mono text-silver hover:text-white transition-all flex items-center justify-center gap-2">
-              <i class="fa-solid fa-sliders text-white"></i> Probar Calibración de Arenas
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-card border border-cyan-500/30 overflow-hidden shadow-lg mb-3 flex items-center justify-center">
+            <img src="minecold.png" alt="MineCold" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center bg-cyan-950/40 text-cyan-300 font-bold text-xs\'><i class=\'fa-solid fa-snowflake text-xl mb-1\'></i>COLD</div>';" class="w-full h-full object-cover">
+          </div>
+
+          <h3 class="font-display font-bold text-2xl text-white">MineCold</h3>
+          <p class="text-xs font-mono text-silver mb-3">Modalidad Duels & Sets</p>
+          <p class="text-xs text-neutral-300 leading-relaxed mb-4 max-w-md mx-auto">
+            Co-propietario encargado de la calibración de Knockback fluido, diseño de sets y tiendas de combate sin ventajas desproporcionadas.
+          </p>
+
+          <div class="pt-3 border-t border-white/10 w-full flex items-center justify-between">
+            <span class="text-xs font-mono text-silver">Knockback: <strong class="text-white" id="kb-mode">Fast Competitive v2</strong></span>
+            <button onclick="toggleKB()" class="px-3 py-1 rounded-lg bg-card hover:bg-cardHover border border-white/10 text-[11px] font-mono text-white transition-all">
+              Calibrar
             </button>
           </div>
         </div>
 
-        <div class="lg:col-span-12 frosted-panel rounded-3xl p-6 border border-white/10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 opacity-85 hover:opacity-100">
-          <div class="flex items-center gap-5">
-            <div class="w-14 h-14 rounded-2xl bg-card border border-white/20 flex items-center justify-center text-2xl text-neutral-300">
-              <i class="fa-solid fa-cube"></i>
+        <div class="frosted-glass rounded-3xl p-5 sm:p-6 border border-white/10 opacity-90 text-center flex flex-col items-center relative overflow-hidden">
+          <div class="flex items-center justify-between w-full mb-4">
+            <span class="px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-700 text-neutral-300 font-mono font-bold text-[10px] uppercase">
+              🔨 BUILDER
+            </span>
+            <span class="px-2 py-0.5 rounded-md bg-red-950/70 border border-red-800 text-red-400 text-[10px] font-mono font-bold uppercase">
+              Cerró
+            </span>
+          </div>
+
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-card border border-emerald-500/20 overflow-hidden shadow-lg mb-3 flex items-center justify-center">
+            <img src="infinity.png" alt="Infinity Network" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center bg-neutral-900 text-neutral-400 font-bold text-xs\'><i class=\'fa-solid fa-mountain text-xl mb-1\'></i>INF</div>';" class="w-full h-full object-cover">
+          </div>
+
+          <h3 class="font-display font-bold text-2xl text-neutral-200">Infinity Network</h3>
+          <p class="text-xs font-mono text-silver mb-3">Red de Modalidades</p>
+          <p class="text-xs text-neutral-400 leading-relaxed max-w-md mx-auto">
+            Diseño estructural y construcción masiva de lobbies centrales y spawns de modalidades. Archivo de proyectos finalizado tras la disolución de la red.
+          </p>
+        </div>
+
+      </div>
+
+      <div id="view-skills" class="hidden w-full space-y-3">
+        <div class="frosted-glass p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center">
+          <div class="flex items-center justify-center gap-2 mb-1">
+            <i class="fa-solid fa-gears text-sm text-white"></i>
+            <h4 class="font-display font-bold text-base text-white">Configurador</h4>
+          </div>
+          <p class="text-xs text-silver max-w-md mx-auto">PaperMC, BoxPvP Core, DeluxeMenus, balance de economía y optimización de latencia sin pérdidas de TPS.</p>
+        </div>
+
+        <div class="frosted-glass p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center">
+          <div class="flex items-center justify-center gap-2 mb-1">
+            <i class="fa-solid fa-bullhorn text-sm text-white"></i>
+            <h4 class="font-display font-bold text-base text-white">Media Manager</h4>
+          </div>
+          <p class="text-xs text-silver max-w-md mx-auto">Estrategias de captación de creadores, anuncios estructurados, difusión y engagement activo en Discord.</p>
+        </div>
+
+        <div class="frosted-glass p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center">
+          <div class="flex items-center justify-center gap-2 mb-1">
+            <i class="fa-solid fa-users-gear text-sm text-white"></i>
+            <h4 class="font-display font-bold text-base text-white">Manager General</h4>
+          </div>
+          <p class="text-xs text-silver max-w-md mx-auto">Liderazgo de equipo, capacitación de moderadores, resolución de conflictos y orden interno.</p>
+        </div>
+
+        <div class="frosted-glass p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center">
+          <div class="flex items-center justify-center gap-2 mb-1">
+            <i class="fa-solid fa-cubes text-sm text-white"></i>
+            <h4 class="font-display font-bold text-base text-white">World Builder</h4>
+          </div>
+          <p class="text-xs text-silver max-w-md mx-auto">Construcción de mapas simétricos para PvP, spawns detallados y terraformado con WorldEdit y FAWE.</p>
+        </div>
+      </div>
+
+      <div id="view-console" class="hidden w-full frosted-glass rounded-2xl overflow-hidden border border-white/20 text-left">
+        <div class="bg-surface px-4 py-2.5 border-b border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-neutral-700"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-neutral-700"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-white/50"></span>
+            <span class="font-mono text-[11px] text-silver ml-1">yooel@core: ~</span>
+          </div>
+          <span class="text-[9px] font-mono text-silver">help, status, clear</span>
+        </div>
+
+        <div class="p-4 bg-black/80 font-mono text-xs text-ghost min-h-[160px] max-h-[240px] overflow-y-auto space-y-1.5" id="console-history">
+          <div class="text-silver">BlackMC & MineCold Core Console [v4.9]</div>
+          <div class="text-neutral-500">Escribe <span class="text-white">help</span> para ver comandos.</div>
+        </div>
+
+        <div class="px-4 py-2.5 bg-surface border-t border-white/10 flex items-center gap-2">
+          <span class="text-white font-mono font-bold text-xs">$</span>
+          <input type="text" id="console-input" placeholder="Comando..." class="w-full bg-transparent font-mono text-xs text-white focus:outline-none placeholder:text-neutral-600" autocomplete="off" />
+          <button onclick="handleConsoleCommand()" class="px-2.5 py-1 rounded bg-white text-black font-mono text-[11px] font-bold uppercase hover:bg-neutral-200">Ok</button>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="w-full max-w-xl mx-auto mt-12 flex flex-col items-center">
+      <div class="text-center mb-6">
+        <span class="text-[10px] font-mono text-silver uppercase tracking-widest">// Vouch Verificado</span>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-white uppercase mt-1">Referencias del Staff</h2>
+      </div>
+
+      <div class="w-full space-y-4">
+
+        <div class="frosted-glass rounded-3xl p-5 sm:p-6 border border-white/15 text-left">
+          <div class="flex items-center gap-3 pb-3 mb-3 border-b border-white/10">
+            <div class="w-11 h-11 rounded-full bg-[#15151c] border border-white/30 overflow-hidden relative flex-shrink-0">
+              <img src="lutrex.png" alt="LuTrEx" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-neutral-900 text-white font-bold text-xs\'>LX</div>';" class="w-full h-full object-cover">
+              <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border border-black"></span>
             </div>
             <div>
-              <div class="flex items-center gap-3">
-                <h3 class="font-display font-bold text-2xl text-neutral-200">Infinity Network</h3>
-                <span class="px-2.5 py-0.5 rounded bg-neutral-900 border border-neutral-700 text-neutral-300 text-[10px] font-mono font-bold uppercase">
-                  🔨 BUILDER
-                </span>
-                <span class="px-2 py-0.5 rounded bg-red-950/70 border border-red-800 text-red-400 text-[10px] font-mono font-bold uppercase">
-                  Cerró
-                </span>
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="font-display font-bold text-sm sm:text-base text-white leading-none">Head Manager | LuTrEx</span>
+                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white/10 text-white border border-white/20">Head Manager</span>
               </div>
-              <p class="text-xs text-neutral-400 mt-1 max-w-2xl leading-relaxed">
-                Diseño estructural y construcción masiva de lobbies centrales y spawns de modalidades. Archivo de proyectos finalizado tras la disolución de la red.
-              </p>
-            </div>
-          </div>
-
-          <div class="text-right text-xs font-mono text-neutral-400 border-t md:border-t-0 md:border-l border-white/10 pt-3 md:pt-0 md:pl-6">
-            <div><span class="text-neutral-500">Especialidad:</span> <span class="text-neutral-200">WorldEdit / Spawns</span></div>
-            <div><span class="text-neutral-500">Estado:</span> <span class="text-red-400">Proyecto Concluido</span></div>
-          </div>
-        </div>
-
-      </div>
-
-      <div id="view-skills" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="frosted-panel p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-card border border-white/15 flex items-center justify-center text-white mb-4">
-              <i class="fa-solid fa-gears text-lg"></i>
-            </div>
-            <span class="text-[10px] font-mono text-silver uppercase">Disciplina 01</span>
-            <h4 class="font-display font-bold text-xl text-white mt-1">Configurador</h4>
-            <p class="text-xs text-silver mt-2 leading-relaxed">
-              PaperMC, BoxPvP Core, DeluxeMenus, economía balanceada y optimización de latencia sin caída de rendimiento.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/10 text-[11px] font-mono text-white/90">
-            20.0 TPS Garantizados
-          </div>
-        </div>
-
-        <div class="frosted-panel p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-card border border-white/15 flex items-center justify-center text-white mb-4">
-              <i class="fa-solid fa-bullhorn text-lg"></i>
-            </div>
-            <span class="text-[10px] font-mono text-silver uppercase">Disciplina 02</span>
-            <h4 class="font-display font-bold text-xl text-white mt-1">Media Manager</h4>
-            <p class="text-xs text-silver mt-2 leading-relaxed">
-              Estrategias de captación de creadores, anuncios estructurados, imagen gráfica y engagement en Discord.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/10 text-[11px] font-mono text-white/90">
-            Gestión de Alcance
-          </div>
-        </div>
-
-        <div class="frosted-panel p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-card border border-white/15 flex items-center justify-center text-white mb-4">
-              <i class="fa-solid fa-users-gear text-lg"></i>
-            </div>
-            <span class="text-[10px] font-mono text-silver uppercase">Disciplina 03</span>
-            <h4 class="font-display font-bold text-xl text-white mt-1">Manager General</h4>
-            <p class="text-xs text-silver mt-2 leading-relaxed">
-              Liderazgo de equipo, capacitación de moderadores, resolución de incidencias y fomento de un ambiente de trabajo sano.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/10 text-[11px] font-mono text-white/90">
-            Liderazgo de Staff
-          </div>
-        </div>
-
-        <div class="frosted-panel p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-card border border-white/15 flex items-center justify-center text-white mb-4">
-              <i class="fa-solid fa-cubes text-lg"></i>
-            </div>
-            <span class="text-[10px] font-mono text-silver uppercase">Disciplina 04</span>
-            <h4 class="font-display font-bold text-xl text-white mt-1">World Builder</h4>
-            <p class="text-xs text-silver mt-2 leading-relaxed">
-              Construcción de mapas simétricos para PvP, spawns detallados y terraformado masivo con WorldEdit y FAWE.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-white/10 text-[11px] font-mono text-white/90">
-            Construcción de Spawns
-          </div>
-        </div>
-      </div>
-
-      <div id="view-console" class="hidden frosted-panel rounded-3xl overflow-hidden border border-white/20">
-        <div class="bg-surface px-5 py-3 border-b border-white/10 flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-neutral-700"></span>
-            <span class="w-3 h-3 rounded-full bg-neutral-700"></span>
-            <span class="w-3 h-3 rounded-full bg-white/50"></span>
-            <span class="font-mono text-xs text-silver ml-2">yooel@synthetix-core: ~ (cli)</span>
-          </div>
-          <span class="text-[10px] font-mono text-silver">Comandos: <code class="text-white">help</code>, <code class="text-white">status</code>, <code class="text-white">clear</code></span>
-        </div>
-
-        <div class="p-6 bg-black/80 font-mono text-xs md:text-sm text-ghost min-h-[220px] max-h-[320px] overflow-y-auto space-y-2" id="console-history">
-          <div class="text-silver">BlackMC & MineCold Core Console [Versión 4.9]</div>
-          <div class="text-neutral-500">Escribe <span class="text-white">help</span> para ver la lista de comandos disponibles.</div>
-        </div>
-
-        <div class="px-5 py-3 bg-surface border-t border-white/10 flex items-center gap-2">
-          <span class="text-white font-mono font-bold">$</span>
-          <input type="text" id="console-input" placeholder="Ingresa un comando..." class="w-full bg-transparent font-mono text-xs text-white focus:outline-none placeholder:text-neutral-600" autocomplete="off" />
-          <button onclick="handleConsoleCommand()" class="px-3.5 py-1.5 rounded-lg bg-white text-black font-mono text-xs font-bold uppercase hover:bg-neutral-200">Ejecutar</button>
-        </div>
-      </div>
-
-    </section>
-
-    <section id="staff-vouch" class="max-w-6xl mx-auto px-6 py-14">
-      <div class="mb-8">
-        <span class="text-xs font-mono text-silver uppercase tracking-widest">// Vouch & Reconocimientos Reales</span>
-        <h2 class="font-display text-3xl font-bold text-white uppercase mt-1">Referencias del Staff</h2>
-        <p class="text-xs text-silver mt-1">Mensajes reales enviados por el equipo directivo sobre mi trabajo en BoxPvP y gestión general.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <div class="frosted-panel rounded-3xl p-6 border border-white/15 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-3.5 pb-4 mb-4 border-b border-white/10">
-              <div class="w-12 h-12 rounded-full bg-[#15151c] border-2 border-white/30 flex items-center justify-center relative overflow-hidden">
-                <i class="fa-solid fa-user-shield text-xl text-white"></i>
-                <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 border border-black"></span>
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <span class="font-display font-bold text-lg text-white leading-none">Head Manager | LuTrEx</span>
-                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white border border-white/20">Head Manager</span>
-                </div>
-                <div class="text-[11px] font-mono text-silver flex items-center gap-2 mt-1">
-                  <span>54.benjaz • Benja</span>
-                  <span class="text-[10px] px-1.5 py-0.2 rounded bg-white/5 text-neutral-300">psicosiao</span>
-                </div>
+              <div class="text-[10px] font-mono text-silver flex items-center gap-1.5 mt-0.5">
+                <span>54.benjaz • Benja</span>
+                <span class="text-[9px] px-1 rounded bg-white/5 text-neutral-300">psicosiao</span>
               </div>
             </div>
-
-            <div class="text-xs font-mono text-neutral-300 leading-relaxed space-y-3" id="quote-lutrex">
-              <p>
-                "Quería tomarme un momento para agradecerte por todo lo que has hecho con el BoxPvP. Sinceramente, todo el trabajo, esfuerzo y dedicación que le has puesto ha sido increíble. Se nota cada hora invertida, cada detalle y todas las ganas que has tenido de sacar adelante este proyecto."
-              </p>
-              <p>
-                "Gracias por confiar en el equipo, por darnos la oportunidad de formar parte de esto y por todo lo que has hecho para que el servidor siga creciendo. Puede que a veces no se note todo el esfuerzo que hay detrás, pero créeme que se valora muchísimo."
-              </p>
-              <p>
-                "De verdad, gracias por todo, por tu tiempo, tu paciencia y por nunca dejar de intentar mejorar las cosas. ¡Todo lo que has logrado con el BoxPvP ha sido increíble y espero que sigan llegando muchos más éxitos! ❤️"
-              </p>
-            </div>
           </div>
 
-          <div class="mt-5 pt-3 border-t border-white/5 flex items-center justify-between">
-            <button onclick="addReaction('lutrex-badge')" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-silver hover:text-white transition-all flex items-center gap-2">
+          <div class="text-xs font-mono text-neutral-300 leading-relaxed space-y-2.5" id="quote-lutrex">
+            <p>
+              "Quería tomarme un momento para agradecerte por todo lo que has hecho con el BoxPvP. Sinceramente, todo el trabajo, esfuerzo y dedicación que le has puesto ha sido increíble. Se nota cada hora invertida, cada detalle y todas las ganas que has tenido de sacar adelante este proyecto."
+            </p>
+            <p>
+              "Gracias por confiar en el equipo, por darnos la oportunidad de formar parte de esto y por todo lo que has hecho para que el servidor siga creciendo. Puede que a veces no se note todo el esfuerzo que hay detrás, pero créeme que se valora muchísimo."
+            </p>
+            <p>
+              "De verdad, gracias por todo, por tu tiempo, tu paciencia y por nunca dejar de intentar mejorar las cosas. ¡Todo lo que has logrado con el BoxPvP ha sido increíble y espero que sigan llegando muchos más éxitos! ❤️"
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between">
+            <button onclick="addReaction('lutrex-badge')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-silver hover:text-white transition-all flex items-center gap-1.5">
               <span>❤️</span> <span id="lutrex-badge">18</span>
             </button>
-            <button onclick="copyQuote('quote-lutrex')" class="text-[11px] font-mono text-silver hover:text-white flex items-center gap-1.5 transition-colors">
+            <button onclick="copyQuote('quote-lutrex')" class="text-[11px] font-mono text-silver hover:text-white flex items-center gap-1 transition-colors">
               <i class="fa-regular fa-copy"></i> Copiar Mensaje
             </button>
           </div>
         </div>
 
-        <div class="frosted-panel rounded-3xl p-6 border border-white/15 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-3.5 pb-4 mb-4 border-b border-white/10">
-              <div class="w-12 h-12 rounded-full bg-[#15151c] border-2 border-white/30 flex items-center justify-center relative overflow-hidden">
-                <i class="fa-solid fa-bolt text-xl text-white"></i>
-                <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 border border-black"></span>
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <span class="font-display font-bold text-lg text-white leading-none">SrMod | Iván ⚡ RAYO</span>
-                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white border border-white/20">SrMod</span>
-                </div>
-                <div class="text-[11px] font-mono text-silver flex items-center gap-2 mt-1">
-                  <span>ivanc2010</span>
-                  <span class="text-[10px] px-1.5 py-0.2 rounded bg-white/5 text-neutral-300">⚡ RAYO</span>
-                </div>
-              </div>
+        <div class="frosted-glass rounded-3xl p-5 sm:p-6 border border-white/15 text-left">
+          <div class="flex items-center gap-3 pb-3 mb-3 border-b border-white/10">
+            <div class="w-11 h-11 rounded-full bg-[#15151c] border border-white/30 overflow-hidden relative flex-shrink-0">
+              <img src="ivan.png" alt="Iván" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-neutral-900 text-white font-bold text-xs\'>IV</div>';" class="w-full h-full object-cover">
+              <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border border-black"></span>
             </div>
-
-            <div class="text-xs font-mono text-neutral-300 leading-relaxed space-y-3" id="quote-ivan">
-              <p>
-                "Yoel, de verdad quería decirte esto porque pocas veces se dice, pero tu trabajo en el BoxPvP se ha notado muchísimo."
-              </p>
-              <p>
-                "No ha sido solo estar ahí como Staff, ha sido el tiempo que le has dedicado, la paciencia que has tenido con la gente, las ganas de ayudar y de que todo saliera bien aunque a veces nadie lo notara. Eso no lo hace cualquiera."
-              </p>
-              <p>
-                "Gracias por estar siempre pendiente, por apoyar al equipo y por hacer que el servidor se sintiera como un lugar chévere para estar. Se nota cuando alguien hace las cosas con el corazón y tú lo hiciste así."
-              </p>
+            <div>
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="font-display font-bold text-sm sm:text-base text-white leading-none">SrMod | Iván ⚡ RAYO</span>
+                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white/10 text-white border border-white/20">SrMod</span>
+              </div>
+              <div class="text-[10px] font-mono text-silver flex items-center gap-1.5 mt-0.5">
+                <span>ivanc2010</span>
+                <span class="text-[9px] px-1 rounded bg-white/5 text-neutral-300">⚡ RAYO</span>
+              </div>
             </div>
           </div>
 
-          <div class="mt-5 pt-3 border-t border-white/5 flex items-center justify-between">
-            <button onclick="addReaction('ivan-badge')" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-silver hover:text-white transition-all flex items-center gap-2">
+          <div class="text-xs font-mono text-neutral-300 leading-relaxed space-y-2.5" id="quote-ivan">
+            <p>
+              "Yoel, de verdad quería decirte esto porque pocas veces se dice, pero tu trabajo en el BoxPvP se ha notado muchísimo."
+            </p>
+            <p>
+              "No ha sido solo estar ahí como Staff, ha sido el tiempo que le has dedicado, la paciencia que has tenido con la gente, las ganas de ayudar y de que todo saliera bien aunque a veces nadie lo notara. Eso no lo hace cualquiera."
+            </p>
+            <p>
+              "Gracias por estar siempre pendiente, por apoyar al equipo y por hacer que el servidor se sintiera como un lugar chévere para estar. Se nota cuando alguien hace las cosas con el corazón y tú lo hiciste así."
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between">
+            <button onclick="addReaction('ivan-badge')" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-silver hover:text-white transition-all flex items-center gap-1.5">
               <span>❤️</span> <span id="ivan-badge">14</span>
             </button>
-            <button onclick="copyQuote('quote-ivan')" class="text-[11px] font-mono text-silver hover:text-white flex items-center gap-1.5 transition-colors">
+            <button onclick="copyQuote('quote-ivan')" class="text-[11px] font-mono text-silver hover:text-white flex items-center gap-1 transition-colors">
               <i class="fa-regular fa-copy"></i> Copiar Mensaje
             </button>
           </div>
@@ -506,7 +456,7 @@
 
   </main>
 
-  <footer class="border-t border-white/10 bg-surface py-8 px-6 text-center">
+  <footer class="border-t border-white/10 bg-surface py-6 px-4 text-center">
     <p class="text-xs font-mono text-silver tracking-widest uppercase">
       Desarrollado por <span class="text-white font-bold">Synthetix Studios</span>
     </p>
@@ -579,10 +529,10 @@
         const btnEl = document.getElementById(`btn-tab-${v}`);
         if (v === tab) {
           viewEl.classList.remove('hidden');
-          btnEl.className = 'px-4 py-2 rounded-lg bg-white text-black font-mono text-xs font-bold transition-all';
+          btnEl.className = 'flex-1 py-2 rounded-lg bg-white text-black font-mono text-xs font-bold transition-all text-center';
         } else {
           viewEl.classList.add('hidden');
-          btnEl.className = 'px-4 py-2 rounded-lg text-silver hover:text-white font-mono text-xs transition-all';
+          btnEl.className = 'flex-1 py-2 rounded-lg text-silver hover:text-white font-mono text-xs transition-all text-center';
         }
       });
     }
@@ -703,7 +653,7 @@
       height = canvas.height = window.innerHeight;
     });
 
-    const dots = Array.from({ length: 35 }, () => ({
+    const dots = Array.from({ length: 30 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       size: Math.random() * 1.5 + 0.5,
