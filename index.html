@@ -17,9 +17,9 @@
         extend: {
           colors: {
             void: '#020204',
-            surface: '#07070b',
-            card: '#0e0e15',
-            cardHover: '#14141e',
+            surface: '#08080d',
+            card: '#101017',
+            cardHover: '#161622',
             silver: '#9ca3af',
             ghost: '#f3f4f6'
           },
@@ -40,9 +40,9 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       background-image:
-        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.16) 0%, transparent 50%),
-        radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
-        radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.16) 0%, transparent 55%),
+        radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
+        radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
     }
 
     ::-webkit-scrollbar { width: 5px; }
@@ -50,24 +50,17 @@
     ::-webkit-scrollbar-thumb { background: #22222e; border-radius: 99px; }
     ::-webkit-scrollbar-thumb:hover { background: #ffffff; }
 
-    .frosted-glass {
-      background: linear-gradient(165deg, rgba(16, 16, 24, 0.82) 0%, rgba(7, 7, 11, 0.96) 100%);
+    .frosted-panel {
+      background: linear-gradient(165deg, rgba(16, 16, 24, 0.85) 0%, rgba(7, 7, 11, 0.98) 100%);
       backdrop-filter: blur(28px);
       -webkit-backdrop-filter: blur(28px);
       border: 1px solid rgba(255, 255, 255, 0.12);
       box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.95), 0 0 35px -10px rgba(255, 255, 255, 0.06);
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .frosted-glass:hover {
+    .frosted-panel:hover {
       border-color: rgba(255, 255, 255, 0.28);
       box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.95), 0 0 45px -10px rgba(255, 255, 255, 0.12);
-    }
-
-    .luminous-title {
-      background: linear-gradient(180deg, #ffffff 30%, #e2e8f0 70%, #cbd5e1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.45));
     }
 
     .cursor-blink {
@@ -98,112 +91,118 @@
   <canvas id="particles-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-25"></canvas>
   <div class="fixed -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[380px] bg-white/[0.08] rounded-full blur-[160px] pointer-events-none z-0"></div>
 
-  <div class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4 pointer-events-none">
-    <div class="frosted-glass rounded-2xl px-4 py-2.5 flex items-center justify-between pointer-events-auto border border-white/15 shadow-2xl">
+  <header class="fixed top-0 left-0 w-full z-50 frosted-panel border-b border-white/10 px-4 sm:px-6 py-3.5">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
       <a href="#" class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg overflow-hidden border border-white/20 bg-card flex-shrink-0">
-          <img src="avatar.png" alt="Yooel" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center font-bold text-xs\'>Y</div>';" class="w-full h-full object-cover">
+        <div class="w-8 h-8 rounded-lg bg-card border border-white/20 overflow-hidden flex items-center justify-center flex-shrink-0">
+          <img src="perfil.png" alt="YOOEL" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover">
+          <span class="hidden font-display font-bold text-xs text-white">Y</span>
         </div>
         <div class="text-left">
-          <span class="font-display font-bold text-xs uppercase text-white block leading-none">YOOEL</span>
-          <span class="text-[9px] font-mono text-silver">@thewodryoyt</span>
+          <span class="font-display font-bold text-sm sm:text-base tracking-wide uppercase text-white block leading-none">YOOEL</span>
+          <span class="text-[9px] font-mono text-silver">@thewodryoyt • DD.J</span>
         </div>
       </a>
 
       <div class="flex items-center gap-2">
-        <button onclick="copyIP('blackmc.us')" class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-card border border-white/10 hover:border-white/30 text-[10px] font-mono text-white transition-all">
+        <button onclick="copyIP('blackmc.us')" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-card border border-white/10 hover:border-white/30 text-[11px] font-mono text-white transition-all">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]"></span>
           <span>blackmc.us</span>
+          <i class="fa-regular fa-copy text-[10px] opacity-60"></i>
         </button>
-        <a href="https://discord.gg/blackmc" target="_blank" class="px-3 py-1 rounded-lg bg-white text-black hover:bg-neutral-200 text-[10px] font-display font-bold uppercase tracking-wider transition-all shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-          Discord
+        <a href="https://discord.gg/blackmc" target="_blank" class="px-3 py-1.5 rounded-lg bg-white text-black hover:bg-neutral-200 text-xs font-display font-bold uppercase tracking-wider transition-all shadow-[0_0_12px_rgba(255,255,255,0.25)]">
+          DISCORD
         </a>
       </div>
     </div>
-  </div>
+  </header>
 
-  <main class="relative z-10 pt-20 sm:pt-24 pb-20 px-4 flex flex-col items-center text-center">
+  <main class="relative z-10 pt-24 sm:pt-28 pb-20 px-4 flex flex-col items-center text-center">
 
-    <section class="w-full max-w-xl mx-auto flex flex-col items-center">
-      <div class="frosted-glass rounded-3xl p-6 sm:p-8 w-full flex flex-col items-center relative overflow-hidden text-center">
+    <section class="w-full max-w-md mx-auto flex flex-col items-center">
+      <div class="frosted-panel rounded-3xl p-6 sm:p-7 w-full flex flex-col items-center relative overflow-hidden text-center">
         
-        <div class="w-full flex items-center justify-between pb-4 mb-5 border-b border-white/10 text-xs font-mono text-silver">
+        <div class="w-full flex items-center justify-between pb-3.5 mb-4 border-b border-white/10 text-xs font-mono text-silver">
           <div class="flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span class="text-white font-semibold tracking-wider text-[11px]">ONLINE</span>
           </div>
-          <span class="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[10px] font-semibold text-white tracking-widest">DD.J</span>
+          <span class="text-[10px] font-semibold text-white tracking-widest font-mono">DD.J</span>
         </div>
 
-        <div class="relative mb-4 floating-box">
-          <div class="absolute -inset-3 bg-white/20 rounded-3xl blur-xl opacity-70"></div>
-          <div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-card border-2 border-white/30 overflow-hidden shadow-2xl flex items-center justify-center">
-            <img src="avatar.png" alt="Yooel Avatar" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-crown text-5xl text-white\'></i>';" class="w-full h-full object-cover">
+        <div class="relative mb-3.5 floating-box">
+          <div class="absolute -inset-2.5 bg-white/20 rounded-2xl blur-lg opacity-70"></div>
+          <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-card border-2 border-white/30 overflow-hidden shadow-2xl flex items-center justify-center">
+            <img src="perfil.png" alt="Perfil Yooel" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover">
+            <div class="hidden w-full h-full items-center justify-center">
+              <i class="fa-solid fa-crown text-3xl sm:text-4xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.9)]"></i>
+            </div>
           </div>
         </div>
 
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-silver text-[11px] font-mono mb-2">
-          <span>@thewodryoyt</span>
-        </div>
-
-        <h1 class="font-display text-4xl sm:text-6xl font-black uppercase tracking-tight text-white luminous-title leading-tight">
+        <h2 class="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight leading-none">
           YOOEL
-        </h1>
+        </h2>
+        <span class="text-xs font-mono text-silver mt-1 mb-3">thewodryoyt</span>
 
-        <div class="flex flex-wrap items-center justify-center gap-1.5 mt-3 w-full">
-          <span class="px-2.5 py-1 rounded-lg bg-white text-black font-mono font-bold text-[10px] uppercase shadow-sm">
-            👑 Dueño • BlackMC
-          </span>
-          <span class="px-2.5 py-1 rounded-lg bg-white/15 text-white border border-white/20 font-mono font-bold text-[10px] uppercase">
-            👑 Dueño • MineCold
-          </span>
-          <span class="px-2.5 py-1 rounded-lg bg-neutral-900 border border-neutral-700 text-neutral-300 font-mono font-bold text-[10px] uppercase">
-            🔨 Ex-Builder • Infinity
-          </span>
-        </div>
-
-        <div class="h-7 mt-3.5 text-xs sm:text-sm font-mono text-white flex items-center justify-center">
-          <span class="text-silver mr-1.5">&gt;</span>
-          <span id="typewriter-text" class="font-semibold text-white"></span>
-          <span class="cursor-blink"></span>
-        </div>
-
-        <p class="mt-4 text-silver text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
-          Hola, soy Yooel, tengo siete meses de experiencia como configurador de servidores, media manager, manager y builder. Especializado en arquitectura competitiva de BoxPvP, gestión integral de comunidades y optimización técnica para redes de Minecraft.
-        </p>
-
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 w-full">
-          <a href="https://discord.gg/blackmc" target="_blank" class="flex-1 min-w-[140px] px-5 py-3 rounded-xl bg-white text-black hover:bg-neutral-200 font-display font-bold text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,255,255,0.25)] flex items-center justify-center gap-2">
-            <i class="fa-brands fa-discord text-sm"></i> Servidor de Discord
-          </a>
-          <button onclick="copyIP('blackmc.us')" class="flex-1 min-w-[140px] px-5 py-3 rounded-xl bg-card hover:bg-cardHover border border-white/20 text-white font-mono text-xs transition-all flex items-center justify-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> IP: blackmc.us
-          </button>
-        </div>
-
-        <div class="mt-6 pt-5 border-t border-white/10 w-full grid grid-cols-2 sm:grid-cols-4 gap-2">
-          <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
-            <span class="font-display font-bold text-xl sm:text-2xl text-white block count-up" data-target="7">0</span>
-            <span class="text-[9px] font-mono text-silver uppercase">Meses Exp</span>
-          </div>
-          <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
-            <span class="font-display font-bold text-xl sm:text-2xl text-white block count-up" data-target="3">0</span>
-            <span class="text-[9px] font-mono text-silver uppercase">Redes</span>
-          </div>
-          <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
-            <span class="font-display font-bold text-xl sm:text-2xl text-white block">20.0</span>
-            <span class="text-[9px] font-mono text-silver uppercase">TPS Core</span>
-          </div>
-          <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
-            <span class="font-display font-bold text-xl sm:text-2xl text-white block">BoxPvP</span>
-            <span class="text-[9px] font-mono text-silver uppercase">Especialidad</span>
-          </div>
+        <div class="w-full py-1.5 px-3 rounded-lg bg-white/5 border border-white/15 text-[10px] font-mono text-white uppercase tracking-widest font-bold text-center">
+          DUEÑO • BLACKMC & MINECOLD
         </div>
 
       </div>
     </section>
 
-    <section class="w-full max-w-xl mx-auto mt-12 flex flex-col items-center">
+    <section class="w-full max-w-xl mx-auto mt-8 flex flex-col items-center text-center">
+
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-silver text-xs font-mono mb-3">
+        <span class="w-2 h-2 rounded-full bg-white"></span> Portafolio de Dirección & Desarrollo
+      </div>
+
+      <h1 class="font-display text-4xl sm:text-6xl font-black uppercase tracking-tight text-white leading-tight">
+        HOLA, SOY <span class="text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.65)] font-black">YOOEL</span>
+      </h1>
+
+      <div class="h-8 mt-2 text-base sm:text-lg font-mono text-white flex items-center justify-center">
+        <span class="text-silver mr-2">&gt;</span>
+        <span id="typewriter-text" class="font-semibold text-white"></span>
+        <span class="cursor-blink"></span>
+      </div>
+
+      <p class="mt-4 text-silver text-sm sm:text-base leading-relaxed font-normal max-w-lg mx-auto">
+        Tengo <strong class="text-white font-semibold">siete meses de experiencia</strong> como configurador de servidores, media manager, manager y builder. Especializado en arquitectura competitiva de BoxPvP, gestión integral de comunidades y optimización técnica para redes de Minecraft.
+      </p>
+
+      <div class="mt-6 w-full max-w-lg grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+        <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
+          <span class="font-display font-bold text-xl sm:text-2xl text-white block count-up" data-target="7">0</span>
+          <span class="text-[9px] font-mono text-silver uppercase">Meses Exp</span>
+        </div>
+        <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
+          <span class="font-display font-bold text-xl sm:text-2xl text-white block count-up" data-target="3">0</span>
+          <span class="text-[9px] font-mono text-silver uppercase">Redes</span>
+        </div>
+        <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
+          <span class="font-display font-bold text-xl sm:text-2xl text-white block">20.0</span>
+          <span class="text-[9px] font-mono text-silver uppercase">TPS Core</span>
+        </div>
+        <div class="p-3 rounded-xl bg-card border border-white/5 text-center">
+          <span class="font-display font-bold text-xl sm:text-2xl text-white block">BoxPvP</span>
+          <span class="text-[9px] font-mono text-silver uppercase">Especialidad</span>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-3 w-full">
+        <a href="https://discord.gg/blackmc" target="_blank" class="flex-1 min-w-[140px] px-6 py-3 rounded-xl bg-white text-black hover:bg-neutral-200 font-display font-bold text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,255,255,0.25)] flex items-center justify-center gap-2">
+          <i class="fa-brands fa-discord text-sm"></i> Servidor de Discord
+        </a>
+        <button onclick="copyIP('blackmc.us')" class="flex-1 min-w-[140px] px-5 py-3 rounded-xl bg-card hover:bg-cardHover border border-white/20 text-white font-mono text-xs transition-all flex items-center justify-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> IP: blackmc.us
+        </button>
+      </div>
+
+    </section>
+
+    <section class="w-full max-w-xl mx-auto mt-14 flex flex-col items-center">
 
       <div class="flex items-center justify-center gap-1.5 bg-surface p-1 rounded-xl border border-white/10 mb-6 w-full max-w-xs mx-auto">
         <button onclick="switchTab('servers')" id="btn-tab-servers" class="flex-1 py-2 rounded-lg bg-white text-black font-mono text-xs font-bold transition-all text-center">
@@ -217,10 +216,10 @@
         </button>
       </div>
 
-      <div id="view-servers" class="w-full space-y-5">
+      <div id="view-servers" class="w-full space-y-4">
 
-        <div class="frosted-glass rounded-3xl p-5 sm:p-6 border border-white/20 text-center flex flex-col items-center relative overflow-hidden">
-          <div class="flex items-center justify-between w-full mb-4">
+        <div class="frosted-panel rounded-2xl p-5 sm:p-6 border border-white/20 text-center flex flex-col items-center">
+          <div class="flex items-center justify-between w-full mb-3">
             <span class="px-2.5 py-0.5 rounded-full bg-white text-black font-mono font-bold text-[10px] uppercase tracking-wider shadow-sm">
               👑 DUEÑO / OWNER
             </span>
@@ -229,12 +228,13 @@
             </span>
           </div>
 
-          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-card border border-purple-500/30 overflow-hidden shadow-lg mb-3 flex items-center justify-center">
-            <img src="blackmc.png" alt="BlackMC Network" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center bg-purple-950/40 text-purple-300 font-bold text-xs\'><i class=\'fa-solid fa-cube text-xl mb-1\'></i>BMC</div>';" class="w-full h-full object-cover">
+          <div class="w-16 h-16 rounded-xl bg-card border border-white/20 overflow-hidden mb-2.5 flex items-center justify-center">
+            <img src="blackmc.png" alt="BlackMC Network" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover">
+            <div class="hidden w-full h-full items-center justify-center font-bold text-xs text-white">BMC</div>
           </div>
 
           <h3 class="font-display font-bold text-2xl text-white">BlackMC Network</h3>
-          <p class="text-xs font-mono text-silver mb-3">blackmc.us • discord.gg/blackmc</p>
+          <p class="text-xs font-mono text-silver mb-2">blackmc.us • discord.gg/blackmc</p>
           <p class="text-xs text-neutral-300 leading-relaxed mb-4 max-w-md mx-auto">
             Dirección ejecutiva integral y desarrollo de modalidades. Creador de la arquitectura técnica del BoxPvP, balanceo de economía in-game, sistema de rangos y dirección del equipo de Staff.
           </p>
@@ -255,20 +255,21 @@
           </div>
         </div>
 
-        <div class="frosted-glass rounded-3xl p-5 sm:p-6 border border-white/15 text-center flex flex-col items-center relative overflow-hidden">
-          <div class="flex items-center justify-between w-full mb-4">
+        <div class="frosted-panel rounded-2xl p-5 sm:p-6 border border-white/15 text-center flex flex-col items-center">
+          <div class="flex items-center justify-between w-full mb-3">
             <span class="px-2.5 py-0.5 rounded-full bg-white/15 text-white border border-white/30 font-mono font-bold text-[10px] uppercase tracking-wider">
               👑 DUEÑO / OWNER
             </span>
             <span class="text-[11px] font-mono text-silver">Arenas PvP</span>
           </div>
 
-          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-card border border-cyan-500/30 overflow-hidden shadow-lg mb-3 flex items-center justify-center">
-            <img src="minecold.png" alt="MineCold" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center bg-cyan-950/40 text-cyan-300 font-bold text-xs\'><i class=\'fa-solid fa-snowflake text-xl mb-1\'></i>COLD</div>';" class="w-full h-full object-cover">
+          <div class="w-16 h-16 rounded-xl bg-card border border-white/20 overflow-hidden mb-2.5 flex items-center justify-center">
+            <img src="minecold.png" alt="MineCold" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover">
+            <div class="hidden w-full h-full items-center justify-center font-bold text-xs text-white">COLD</div>
           </div>
 
           <h3 class="font-display font-bold text-2xl text-white">MineCold</h3>
-          <p class="text-xs font-mono text-silver mb-3">Modalidad Duels & Sets</p>
+          <p class="text-xs font-mono text-silver mb-2">Modalidad Duels & Sets</p>
           <p class="text-xs text-neutral-300 leading-relaxed mb-4 max-w-md mx-auto">
             Co-propietario encargado de la calibración de Knockback fluido, diseño de sets y tiendas de combate sin ventajas desproporcionadas.
           </p>
@@ -281,8 +282,8 @@
           </div>
         </div>
 
-        <div class="frosted-glass rounded-3xl p-5 sm:p-6 border border-white/10 opacity-90 text-center flex flex-col items-center relative overflow-hidden">
-          <div class="flex items-center justify-between w-full mb-4">
+        <div class="frosted-panel rounded-2xl p-5 sm:p-6 border border-white/10 opacity-90 text-center flex flex-col items-center">
+          <div class="flex items-center justify-between w-full mb-3">
             <span class="px-2.5 py-0.5 rounded-md bg-neutral-900 border border-neutral-700 text-neutral-300 font-mono font-bold text-[10px] uppercase">
               🔨 BUILDER
             </span>
@@ -291,12 +292,13 @@
             </span>
           </div>
 
-          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-card border border-emerald-500/20 overflow-hidden shadow-lg mb-3 flex items-center justify-center">
-            <img src="infinity.png" alt="Infinity Network" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center bg-neutral-900 text-neutral-400 font-bold text-xs\'><i class=\'fa-solid fa-mountain text-xl mb-1\'></i>INF</div>';" class="w-full h-full object-cover">
+          <div class="w-16 h-16 rounded-xl bg-card border border-white/20 overflow-hidden mb-2.5 flex items-center justify-center">
+            <img src="infinity.png" alt="Infinity Network" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover">
+            <div class="hidden w-full h-full items-center justify-center font-bold text-xs text-neutral-400">INF</div>
           </div>
 
           <h3 class="font-display font-bold text-2xl text-neutral-200">Infinity Network</h3>
-          <p class="text-xs font-mono text-silver mb-3">Red de Modalidades</p>
+          <p class="text-xs font-mono text-silver mb-2">Red de Modalidades</p>
           <p class="text-xs text-neutral-400 leading-relaxed max-w-md mx-auto">
             Diseño estructural y construcción masiva de lobbies centrales y spawns de modalidades. Archivo de proyectos finalizado tras la disolución de la red.
           </p>
@@ -305,7 +307,7 @@
       </div>
 
       <div id="view-skills" class="hidden w-full space-y-3">
-        <div class="frosted-glass p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center">
+        <div class="frosted-panel p-4 rounded-xl border border-white/10 text-center flex flex-col items-center">
           <div class="flex items-center justify-center gap-2 mb-1">
             <i class="fa-solid fa-gears text-sm text-white"></i>
             <h4 class="font-display font-bold text-base text-white">Configurador</h4>
@@ -313,7 +315,7 @@
           <p class="text-xs text-silver max-w-md mx-auto">PaperMC, BoxPvP Core, DeluxeMenus, balance de economía y optimización de latencia sin pérdidas de TPS.</p>
         </div>
 
-        <div class="frosted-glass p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center">
+        <div class="frosted-panel p-4 rounded-xl border border-white/10 text-center flex flex-col items-center">
           <div class="flex items-center justify-center gap-2 mb-1">
             <i class="fa-solid fa-bullhorn text-sm text-white"></i>
             <h4 class="font-display font-bold text-base text-white">Media Manager</h4>
@@ -321,7 +323,7 @@
           <p class="text-xs text-silver max-w-md mx-auto">Estrategias de captación de creadores, anuncios estructurados, difusión y engagement activo en Discord.</p>
         </div>
 
-        <div class="frosted-glass p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center">
+        <div class="frosted-panel p-4 rounded-xl border border-white/10 text-center flex flex-col items-center">
           <div class="flex items-center justify-center gap-2 mb-1">
             <i class="fa-solid fa-users-gear text-sm text-white"></i>
             <h4 class="font-display font-bold text-base text-white">Manager General</h4>
@@ -329,7 +331,7 @@
           <p class="text-xs text-silver max-w-md mx-auto">Liderazgo de equipo, capacitación de moderadores, resolución de conflictos y orden interno.</p>
         </div>
 
-        <div class="frosted-glass p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center">
+        <div class="frosted-panel p-4 rounded-xl border border-white/10 text-center flex flex-col items-center">
           <div class="flex items-center justify-center gap-2 mb-1">
             <i class="fa-solid fa-cubes text-sm text-white"></i>
             <h4 class="font-display font-bold text-base text-white">World Builder</h4>
@@ -338,7 +340,7 @@
         </div>
       </div>
 
-      <div id="view-console" class="hidden w-full frosted-glass rounded-2xl overflow-hidden border border-white/20 text-left">
+      <div id="view-console" class="hidden w-full frosted-panel rounded-2xl overflow-hidden border border-white/20 text-left">
         <div class="bg-surface px-4 py-2.5 border-b border-white/10 flex items-center justify-between">
           <div class="flex items-center gap-1.5">
             <span class="w-2.5 h-2.5 rounded-full bg-neutral-700"></span>
@@ -363,7 +365,7 @@
 
     </section>
 
-    <section class="w-full max-w-xl mx-auto mt-12 flex flex-col items-center">
+    <section class="w-full max-w-xl mx-auto mt-14 flex flex-col items-center">
       <div class="text-center mb-6">
         <span class="text-[10px] font-mono text-silver uppercase tracking-widest">// Vouch Verificado</span>
         <h2 class="font-display text-2xl sm:text-3xl font-bold text-white uppercase mt-1">Referencias del Staff</h2>
@@ -371,10 +373,11 @@
 
       <div class="w-full space-y-4">
 
-        <div class="frosted-glass rounded-3xl p-5 sm:p-6 border border-white/15 text-left">
+        <div class="frosted-panel rounded-2xl p-5 sm:p-6 border border-white/15 text-left">
           <div class="flex items-center gap-3 pb-3 mb-3 border-b border-white/10">
             <div class="w-11 h-11 rounded-full bg-[#15151c] border border-white/30 overflow-hidden relative flex-shrink-0">
-              <img src="lutrex.png" alt="LuTrEx" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-neutral-900 text-white font-bold text-xs\'>LX</div>';" class="w-full h-full object-cover">
+              <img src="lutrex.png" alt="LuTrEx" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover">
+              <div class="hidden w-full h-full items-center justify-center font-bold text-xs text-white">LX</div>
               <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border border-black"></span>
             </div>
             <div>
@@ -411,10 +414,11 @@
           </div>
         </div>
 
-        <div class="frosted-glass rounded-3xl p-5 sm:p-6 border border-white/15 text-left">
+        <div class="frosted-panel rounded-2xl p-5 sm:p-6 border border-white/15 text-left">
           <div class="flex items-center gap-3 pb-3 mb-3 border-b border-white/10">
             <div class="w-11 h-11 rounded-full bg-[#15151c] border border-white/30 overflow-hidden relative flex-shrink-0">
-              <img src="ivan.png" alt="Iván" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-neutral-900 text-white font-bold text-xs\'>IV</div>';" class="w-full h-full object-cover">
+              <img src="ivan.png" alt="Iván" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover">
+              <div class="hidden w-full h-full items-center justify-center font-bold text-xs text-white">IV</div>
               <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border border-black"></span>
             </div>
             <div>
